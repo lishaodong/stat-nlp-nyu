@@ -1,0 +1,17 @@
+trigram
+GUESS:	AM: -2.65E03	LM: -1.28E02	Total: -2.77E03	[the, soviets, for, example, are, having, difficulty, shipping, s., oil, through, their, normal, want, reports, traders, said, in]
+GOLD:	AM: -2.65E03	LM: -1.30E02	Total: -2.78E03	[the, soviets, for, example, are, having, difficulty, shipping, gas, oil, through, their, normal, winter, ports, traders, said]
+
+GUESS:	AM: -2.65E03	LM: -1.18E02	Total: -2.76E03	[the, soviets, for, example, are, having, difficulty, shipping, s., oil, through, their, normal, want, reports, traders, said, in]
+GOLD:	AM: -2.65E03	LM: -1.22E02	Total: -2.78E03	[the, soviets, for, example, are, having, difficulty, shipping, gas, oil, through, their, normal, winter, ports, traders, said]
+
+unigram
+GUESS:	AM: -2.64E03	LM: -1.34E02	Total: -2.78E03	[the, soviets, reasonable, are, having, difficulty, shipping, gas, oil, through, their, normal, want, reports, traders, said, in]
+GOLD:	AM: -2.65E03	LM: -1.38E02	Total: -2.79E03	[the, soviets, for, example, are, having, difficulty, shipping, gas, oil, through, their, normal, winter, ports, traders, said]
+
+
+
+bigram
+
+GUESS:	AM: -3.31E03	LM: -1.12E02	Total: -3.42E03	[the, federated, acquisition, created, an, opportunity, of, a, olympia, and, york, to, increase, its, ownership, the, spokesman, said]
+GOLD:	AM: -3.32E03	LM: -1.07E02	Total: -3.42E03	[the, federated, acquisition, created, an, opportunity, for, olympia, and, york, to, increase, its, ownership, the, spokesman, said]
