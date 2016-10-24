@@ -125,3 +125,80 @@ minitest experiment 0.01 null = 0.2;
   NULL -> [W : 0.6687308429918489, Y : 0.2295578313362249, Z : 0.0898399708486511, X : 0.011863974432443556, V : 6.877627631167452E-6, U : 5.027632002858917E-7]
 
 Error analysis, too many null.
+
+experiments
+
+ratio: 0.1, max: 10000, bucket:0.001
+start EM
+Iteration: 7
+Precision: 0.5973837209302325
+Recall: 0.742603550295858
+AER: 0.35477582846003897
+ratio: 0.1, max: 10000, bucket:0.01
+start EM
+Iteration: 7
+Precision: 0.7192982456140351
+Recall: 0.7071005917159763
+AER: 0.28554641598119856
+ratio: 0.1, max: 10000, bucket:0.05
+start EM
+Iteration: 8
+Precision: 0.769620253164557
+Recall: 0.6183431952662722
+AER: 0.3001364256480218
+ratio: 0.1, max: 10000, bucket:0.2
+start EM
+Iteration: 8
+Precision: 0.8153846153846154
+Recall: 0.4467455621301775
+AER: 0.3929765886287625
+ratio: 0.05, max: 10000, bucket:0.001
+start EM
+Iteration: 13
+Precision: 0.5918367346938775
+Recall: 0.7396449704142012
+AER: 0.359375
+ratio: 0.05, max: 10000, bucket:0.01
+start EM
+Iteration: 12
+Precision: 0.7007575757575758
+Recall: 0.7071005917159763
+AER: 0.2967667436489607
+ratio: 0.05, max: 10000, bucket:0.05
+start EM
+Iteration: 12
+Precision: 0.7580246913580246
+Recall: 0.621301775147929
+AER: 0.3041722745625841
+ratio: 0.05, max: 10000, bucket:0.2
+start EM
+Iteration: 13
+Precision: 0.8052434456928839
+Recall: 0.4467455621301775
+AER: 0.39504132231404954
+ratio: 0.01, max: 10000, bucket:0.001
+start EM
+Iteration: 39
+Precision: 0.5932944606413995
+Recall: 0.7337278106508875
+AER: 0.3603515625
+ratio: 0.01, max: 10000, bucket:0.01
+start EM
+Iteration: 42
+Precision: 0.6795580110497238
+Recall: 0.7100591715976331
+AER: 0.3087400681044268
+ratio: 0.01, max: 10000, bucket:0.05
+start EM
+Iteration: 42
+Precision: 0.7452380952380953
+Recall: 0.621301775147929
+AER: 0.3100263852242744
+ratio: 0.01, max: 10000, bucket:0.2
+start EM
+Iteration: 45
+Precision: 0.7838827838827839
+Recall: 0.4437869822485207
+AER: 0.4042553191489362
+
+

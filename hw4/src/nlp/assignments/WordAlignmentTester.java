@@ -266,9 +266,9 @@ public class WordAlignmentTester {
     Map<Integer, Alignment> testAlignments
   ) {
     List<SentencePair> trainingSentencePairs;
-    double[] ratios = new double[]{0.1, 0.05, 0.01};
-    int[] maxes = new int[]{10000};
-    double[] buckets = new double[]{0.001, 0.01, 0.05, 0.2};
+    double[] ratios = new double[]{0.2, 0.1, 0.05};
+    int[] maxes = new int[]{50000, 100000};
+    double[] buckets = new double[]{0.01};
     for (double ratio: ratios) {
       for (int max: maxes) {
         for (double bucket: buckets) {
