@@ -13,7 +13,7 @@ public class Model1WordAlinger implements WordAligner {
   protected double bucket;
   double thresholdRatio;
   int numIter = 0;
-  boolean verbose = true;
+  boolean verbose = false;
   List<SentencePair> trainingSentencePairs;
   Set<String> englishVacabulary = new HashSet<>();
   Set<String> frenchVacabulary = new HashSet<>();
