@@ -244,20 +244,20 @@ public class WordAlignmentTester {
     } else if (model.equalsIgnoreCase("heuristic")) {
       wordAligner = new HeuristicWordAligner(trainingSentencePairs);
     } else if (model.equalsIgnoreCase("model1")) {
-      wordAligner = new Model1WordAlinger(trainingSentencePairs, 0.01, 0.05);
+      wordAligner = new Model1WordAlinger(trainingSentencePairs, 0.1, 0.01);
     } else if (model.equalsIgnoreCase("model2")) {
-      wordAligner = new Model2WordAlinger(trainingSentencePairs, 0.1, 0.05);
+      wordAligner = new Model2WordAlinger(trainingSentencePairs, 0.1, 0.01);
     }
     // TODO : build other alignment models
 
     // Test model
-    //test(wordAligner, testSentencePairs, testAlignments, verbose);
+    test(wordAligner, testSentencePairs, testAlignments, false);
     // get data
-     getData(basePath, testSentencePairs, testAlignments);
+     //getData(basePath, testSentencePairs, testAlignments);
     
     // Generate file for submission
-    //testSentencePairs = readSentencePairs(basePath+"/test", Integer.MAX_VALUE);
-    //predict(wordAligner, testSentencePairs, basePath+"/"+model+".out");
+    testSentencePairs = readSentencePairs(basePath+"/test", Integer.MAX_VALUE);
+    predict(wordAligner, testSentencePairs, basePath+"/"+model+".out");
   }
 
   private static void getData(
