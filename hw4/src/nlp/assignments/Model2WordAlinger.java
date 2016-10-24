@@ -5,6 +5,7 @@ import java.util.List;
 public class Model2WordAlinger extends Model1WordAlinger {
   private final double bucket;
   double[][] Zss;
+  int MAX = 200;
 
   public Model2WordAlinger(
     List<WordAlignmentTester.SentencePair> trainingSentencePairs, double ratio, double bucket
@@ -16,7 +17,6 @@ public class Model2WordAlinger extends Model1WordAlinger {
   @Override
   protected void initialize() {
     super.initialize();
-    int MAX = 180;
     Zss = new double[MAX][MAX];
     for (int I = 1; I < MAX; I++) {
       for (int J = 1; J < MAX; J++) {
@@ -38,6 +38,12 @@ public class Model2WordAlinger extends Model1WordAlinger {
   @Override
   protected double getP_f_e(String e, String f, int i, int j, int I, int J) {
     if (e.equals("NULL")) return bucket * e2fWords.getCount(e, f);
+    if (I >= MAX) {
+      I = MAX - 1;
+    }
+    if (J >= MAX) {
+      J = MAX - 1;
+    }
     return (1 -bucket) * e2fWords.getCount(e, f) * distanceProb(i, j, I, J) / Zss[I][J];
   }
 

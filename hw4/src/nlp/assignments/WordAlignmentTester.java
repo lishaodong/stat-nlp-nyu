@@ -246,7 +246,7 @@ public class WordAlignmentTester {
     } else if (model.equalsIgnoreCase("model1")) {
       wordAligner = new Model1WordAlinger(trainingSentencePairs, 0.01);
     } else if (model.equalsIgnoreCase("model2")) {
-      wordAligner = new Model2WordAlinger(trainingSentencePairs, 0.1, 0.2);
+      wordAligner = new Model2WordAlinger(trainingSentencePairs, 0.1, 0.01);
     }
     // TODO : build other alignment models
 
