@@ -3,27 +3,31 @@ package nlp.assignments;
 import java.util.List;
 
 public class Model2WordAlinger extends Model1WordAlinger {
-  private final double bucket;
   double[][] Zss;
   static int MAX = 200;
 
   public Model2WordAlinger(
     List<WordAlignmentTester.SentencePair> trainingSentencePairs, double ratio, double bucket
   ) {
-    super(trainingSentencePairs, ratio);
-    this.bucket = bucket;
+    super(trainingSentencePairs, ratio, bucket);
   }
 
   @Override
   protected void initialize() {
     super.initialize();
     Zss = new double[MAX][MAX];
-    for (int I = 1; I < MAX; I++) {
-      for (int J = 1; J < MAX; J++) {
-        Zss[I][J] = calcuateSum(I, J);
-      }
-    }
   }
+
+  private double dpZss(int I, int J) {
+    if (Zss[I][J] == 0) {
+      Zss[I][J] = calcuateSum(I, J);
+    }
+    if (Zss[I][J] == 0) {
+      throw new IllegalStateException();
+    }
+    return Zss[I][J];
+  }
+
 
   private double calcuateSum(int I, int J) {
     double sum = 0;
@@ -44,7 +48,12 @@ public class Model2WordAlinger extends Model1WordAlinger {
     if (J >= MAX) {
       J = MAX - 1;
     }
-    return (1 -bucket) * e2fWords.getCount(e, f) * distanceProb(i, j, I, J) / Zss[I][J];
+    double indexProb = distanceProb(i, j, I, J) / dpZss(I, J);
+    double result = (1 - bucket) * e2fWords.getCount(e, f) * indexProb;
+    if (Double.isNaN(result)) {
+      throw  new IllegalStateException();
+    }
+    return result;
   }
 
   private double distanceProb(int i, int j, double I, double J) {

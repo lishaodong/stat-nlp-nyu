@@ -244,9 +244,9 @@ public class WordAlignmentTester {
     } else if (model.equalsIgnoreCase("heuristic")) {
       wordAligner = new HeuristicWordAligner(trainingSentencePairs);
     } else if (model.equalsIgnoreCase("model1")) {
-      wordAligner = new Model1WordAlinger(trainingSentencePairs, 0.01);
+      wordAligner = new Model1WordAlinger(trainingSentencePairs, 0.01, 0.05);
     } else if (model.equalsIgnoreCase("model2")) {
-      wordAligner = new Model2WordAlinger(trainingSentencePairs, 0.1, 0.01);
+      wordAligner = new Model2WordAlinger(trainingSentencePairs, 0.1, 0.05);
     }
     // TODO : build other alignment models
 

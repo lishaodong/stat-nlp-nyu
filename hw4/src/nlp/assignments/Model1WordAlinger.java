@@ -10,6 +10,7 @@ import java.util.Set;
 
 import static nlp.assignments.WordAlignmentTester.*;
 public class Model1WordAlinger implements WordAligner {
+  protected double bucket;
   double thresholdRatio;
   int numIter = 0;
   boolean verbose = true;
@@ -20,8 +21,9 @@ public class Model1WordAlinger implements WordAligner {
   CounterMap<String, String> e2fWords = new CounterMap<>();
 
   public Model1WordAlinger(
-    List<SentencePair> trainingSentencePairs, double ratio
+    List<SentencePair> trainingSentencePairs, double ratio, double bucket
   ) {
+    this.bucket = bucket;
     this.thresholdRatio = ratio;
     this.trainingSentencePairs = new ArrayList<>();
     for (SentencePair pair: trainingSentencePairs) {
@@ -78,6 +80,9 @@ public class Model1WordAlinger implements WordAligner {
             String e = englishWords.get(ei);
             s_total_f += getP_f_e(e, f, ei, fj, E-1, F);
           }
+          if (Double.isNaN(s_total_f)) {
+            throw  new IllegalStateException();
+          }
           s_totalF.setCount(f, s_total_f);
         }
         // collect counts
@@ -87,6 +92,9 @@ public class Model1WordAlinger implements WordAligner {
           for (int ei = 0; ei < E; ei++) {
             String e = englishWords.get(ei);
             double increaseAmount = getP_f_e(e, f, ei, fj, E-1, F) / s_total_f;
+            if (Double.isNaN(increaseAmount)) {
+              throw  new IllegalStateException();
+            }
             e2fCounter.incrementCount(e, f, increaseAmount);
             totalE.incrementCount(e, increaseAmount);
           }
@@ -101,6 +109,9 @@ public class Model1WordAlinger implements WordAligner {
           difference+=gap;
           if (gap > thresholdRatio) {
             converged = false;
+          }
+          if (Double.isNaN(newProb)) {
+            throw  new IllegalStateException();
           }
           e2fWords.setCount(e, f, newProb);
         }
@@ -119,8 +130,8 @@ public class Model1WordAlinger implements WordAligner {
 
     for (int fj = 0; fj < numFrenchWords; fj++) {
       String frenchWord = frenchWords.get(fj);
-      String bestEnglishWord= getMostPossibleEnglishWord(
-        frenchWord, englishWords, fj, F);
+      String bestEnglishWord= getMostPossibleEnglishWord(frenchWord,
+        englishWords, fj, F);
       int englishPosition = bestEnglishWord.equals("NULL")
         ? -1
         : englishWords.indexOf(bestEnglishWord);
@@ -134,14 +145,18 @@ public class Model1WordAlinger implements WordAligner {
     int E = englishWords.size() -1;
 
     String resultWord = null;
-    double maxProb = 0;
+    double maxProb = -1;
     for (int ei = 0; ei < englishWords.size(); ei++) {
       String englishWord = englishWords.get(ei);
       double prob = getP_f_e(englishWord, frenchWord, ei, fj, E, F);
+
       if (prob >= maxProb) {
         maxProb = prob;
         resultWord = englishWord;
       }
+    }
+    if (resultWord==null) {
+      System.out.println();
     }
     return resultWord;
   }
