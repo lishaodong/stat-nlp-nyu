@@ -5,7 +5,7 @@ import java.util.List;
 public class Model2WordAlinger extends Model1WordAlinger {
   private final double bucket;
   double[][] Zss;
-  int MAX = 200;
+  static int MAX = 200;
 
   public Model2WordAlinger(
     List<WordAlignmentTester.SentencePair> trainingSentencePairs, double ratio, double bucket
